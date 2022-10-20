@@ -62,10 +62,10 @@ a:hover {
     }
 
     .main::before {
-        width: 70vw;
+        width: 100vw;
     }
 
     .main::after {
-        width: 70vw;
+        width: 100vw;
     }
 }
