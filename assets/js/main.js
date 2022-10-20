@@ -39,25 +39,30 @@ function updateLanguages(profileData) {
 
 function updatePortfolio(profileData) {
     const portfolio = document.getElementById('profile.portfolio')
-    portfolio.innerHTML = profileData.porftolio.map(portfolio =>  
-        `<li>
-            <h3 class="title github">${portfolio.name}</h3>
-            <a href="${portfolio.url}" target="_blank">${portfolio.url}</a>
-        </li>`).join('')
+    portfolio.innerHTML = profileData.portfolio.map(portfolio => {  
+        return `
+            <li>
+                <h3 ${portfolio.github ? 'class="github"' : ''}>${portfolio.name}</h3>
+                <a href="${portfolio.url}" target="_blank">${portfolio.url}</a>
+            </li>
+        `
+    }).join('')
 }
 
 function updateProfessionalExperience(profileData) {
     const experience = document.getElementById('profile.experience')
-    experience.innerHTML = profileData.professionalExperience.map(professionalExperience => 
-        `<li>
-            <h3 class="title">${professionalExperience.name}</h3>
-            <p class="period">${professionalExperience.period}</p>
-            <p class="descrição">${professionalExperience.description}</p>
-        </li>`).join('')
+    experience.innerHTML = profileData.professionalExperience.map(professionalExperience => {
+        return `
+            <li>
+                <h3 class="title">${professionalExperience.name}</h3>
+                <p class="period">${professionalExperience.period}</p>
+                <p class="descrição">${professionalExperience.description}</p>
+            </li>
+        `
+    }).join('')
 }
 
 (async () => {
-
     const profileData = await fetchProfileData()
     updateProfileInfo(profileData)
     console.log(profileData)
